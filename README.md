@@ -18,7 +18,7 @@ sudo apt-get install zlib1g zlib1g-dev
 ```bash
 ZNZLIB_LDFLAGS = -L/path/to/your/znzlib/directory -lfsl-znz
 ```
-    Then, add $(ZNZLIB_LDFLAGS) in the compile step of the makefile.
+Then, add $(ZNZLIB_LDFLAGS) in the compile step of the makefile.
 
 - Compile Source Code:
     Execute the appropriate compile command to build the McFlirt library. For example:
@@ -26,7 +26,7 @@ ZNZLIB_LDFLAGS = -L/path/to/your/znzlib/directory -lfsl-znz
 make clean
 make
 ```
-    This command will compile the source code and generate the executable file for McFlirt.
+This command will compile the source code and generate the executable file for McFlirt.
 
 ## Usage
 Once the McFlirt library is successfully compiled, you can use it to perform motion correction on fMRI datasets. Follow these steps to utilize McFlirt:
@@ -35,7 +35,7 @@ Once the McFlirt library is successfully compiled, you can use it to perform mot
 ```bash
 ./mcflirt -in <input_file> [options]
 ```
-    Replace <input_file> with the path to your fMRI dataset.
+Replace <input_file> with the path to your fMRI dataset.
 
 - Specify Options:
     Customize the behavior of McFlirt by providing additional options as needed. Refer to the usage guide provided in the documentation for a list of available options and their descriptions.
