@@ -6,7 +6,7 @@ Welcome to the McFlirt library, a tool designed for motion correction of fMRI (f
 ## Compilation
 To compile the McFlirt library, follow these steps:
 - Install Required Libraries:
-    Ensure that all necessary libraries, such as Blas,Lapack,zlib, are installed on your system. Use the following command to install those:
+    Ensure that all necessary libraries, such as `Blas`,`Lapack`,`zlib`, are installed on your system. Use the following command to install those:
 ```bash
 sudo apt-get install libblas-dev libblas3
 sudo apt-get install liblapack-dev liblapack3
@@ -18,7 +18,7 @@ sudo apt-get install zlib1g zlib1g-dev
 ```bash
 ZNZLIB_LDFLAGS = -L/path/to/your/znzlib/directory -lfsl-znz
 ```
-Then, add $(ZNZLIB_LDFLAGS) in the compile step of the makefile.
+Replace `Path to your znzlib directory` with actual path to your directory.Then, add `$(ZNZLIB_LDFLAGS)` in the compile step of the makefile.
 
 - Compile Source Code:
     Execute the appropriate compile command to build the McFlirt library. For example:
@@ -35,7 +35,7 @@ Once the McFlirt library is successfully compiled, you can use it to perform mot
 ```bash
 ./mcflirt -in <input_file> [options]
 ```
-Replace <input_file> with the path to your fMRI dataset.
+Replace `<input_file>` with the path to your fMRI dataset.
 
 - Specify Options:
     Customize the behavior of McFlirt by providing additional options as needed. Refer to the usage guide provided in the documentation for a list of available options and their descriptions.
