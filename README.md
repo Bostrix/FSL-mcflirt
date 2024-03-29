@@ -3,6 +3,18 @@
 ## Introduction
 Welcome to the McFlirt library, a tool designed for motion correction of fMRI (functional Magnetic Resonance Imaging) data. This guide will walk you through the process of compiling the McFlirt library and utilizing its functionalities to generate motion-corrected fMRI datasets.
 
+## Clone the Repository
+Begin by cloning the project repository from GitHub onto your local machine. You can do this by running the following command in your terminal or command prompt:
+```bash
+https://github.com/Bostrix/FSL-mcflirt.git
+```
+This command will create a local copy of the project in a directory named "FSL-mcflirt".
+
+## Navigate to Project Directory
+Change your current directory to the newly cloned project directory using the following command:
+```bash
+cd FSL-mcflirt
+```
 ## Compilation
 To compile the McFlirt library, follow these steps:
 - Install Required Libraries:
@@ -18,7 +30,7 @@ sudo apt-get install zlib1g zlib1g-dev
 ```bash
 ZNZLIB_LDFLAGS = -L/path/to/your/znzlib/directory -lfsl-znz
 ```
-Replace `Path to your znzlib directory` with actual path to your directory.Then, add `$(ZNZLIB_LDFLAGS)` in the compile step of the makefile.
+Replace `Path to your znzlib directory` with actual path to your directory.Then, make sure that `$(ZNZLIB_LDFLAGS)` is added in the compile step of the makefile.
 
 - Compile Source Code:
     Execute the appropriate compile command to build the McFlirt library. For example:
@@ -27,6 +39,25 @@ make clean
 make
 ```
 This command will compile the source code and generate the executable file for McFlirt.
+
+- Resolving Shared Library Errors:
+When running an executable on Linux, you may encounter errors related to missing shared libraries.This typically manifests as messages like:
+```bash
+./mcflirt: error while loading shared libraries: libexample.so: cannot open shared object file:No such file or directory
+```
+To resolve these errors,Pay attention to the names of the missing libraries mentioned in the error message.Locate the missing libraries on your system. If they are not present, you may need to install the corresponding packages.If the libraries are installed in custom directories, you need to specify those directories using the `LD_LIBRARY_PATH` environment variable. For example:
+```bash
+export LD_LIBRARY_PATH=/path/to/custom/libraries:$LD_LIBRARY_PATH
+```
+Replace `/path/to/custom/libraries` with the actual path to the directory containing the missing libraries.Once the `LD_LIBRARY_PATH` is set, attempt to run the executable again.If you encounter additional missing library errors, repeat steps until all dependencies are resolved.
+
+
+- Resolving "The environment variable FSLOUTPUTTYPE is not defined" errors:
+If you encounter an error related to the FSLOUTPUTTYPE environment variable not being set.Setting it to `NIFTI_GZ` is a correct solution, as it defines the output format for FSL tools to NIFTI compressed with gzip.Here's how you can resolve:
+```bash
+export FSLOUTPUTTYPE=NIFTI_GZ
+```
+By running this command, you've set the `FSLOUTPUTTYPE` environment variable to `NIFTI_GZ`,which should resolve the error you encountered.
 
 ## Usage
 Once the McFlirt library is successfully compiled, you can use it to perform motion correction on fMRI datasets. Follow these steps to utilize McFlirt:
