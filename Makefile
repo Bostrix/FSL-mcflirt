@@ -41,4 +41,4 @@ libraries:
 
 #Clean rule
 clean:
-	rm -f mcflirt $(OBJS) $(LIB_OBJS)
+	rm -f mcflirt $(OBJS) $(LIB_OBJS) $(shell find . -type f \( -name "*.o" -o -name "*.so" \))
