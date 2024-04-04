@@ -3,10 +3,12 @@
 ## Introduction
 Welcome to the McFlirt library, a tool designed for motion correction of fMRI (functional Magnetic Resonance Imaging) data. This guide will walk you through the process of compiling the McFlirt library and utilizing its functionalities to generate motion-corrected fMRI datasets.
 
+For comprehensive details regarding MCFLIRT tool, kindly refer to the FMRIB Software Library (FSL) website. You can access the latest resources and documentation on MCFLIRT at the [FSL Git Repository](https://git.fmrib.ox.ac.uk/fsl). Furthermore, additional information and detailed documentation about MCFLIRT are available on the FSL wiki page dedicated to MCFLIRT: [MCFLIRT Documentation](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT).
+
 ## Clone the Repository
 Begin by cloning the project repository from GitHub onto your local machine. You can do this by running the following command in your terminal or command prompt:
 ```bash
-https://github.com/Bostrix/FSL-mcflirt.git
+git clone https://github.com/Bostrix/FSL-mcflirt.git
 ```
 This command will create a local copy of the project in a directory named "FSL-mcflirt".
 
@@ -15,22 +17,25 @@ Change your current directory to the newly cloned project directory using the fo
 ```bash
 cd FSL-mcflirt
 ```
-## Compilation
-To compile the McFlirt library, follow these steps:
-- Install Required Libraries:
-    Ensure that all necessary libraries, such as `Blas`,`Lapack`,`zlib`, are installed on your system. Use the following command to install those:
+## Installing Dependencies
+To install the necessary dependencies for compiling and building the project, follow these steps:
 ```bash
+sudo apt-get update
+sudo apt install g++
+sudo apt install make
 sudo apt-get install libblas-dev libblas3
 sudo apt-get install liblapack-dev liblapack3
 sudo apt-get install zlib1g zlib1g-dev
+sudo apt-get install libboost-all-dev
 ```
+After completing these steps, you should have all the necessary dependencies installed on your system to use MCFLIRT
 
-- Modfication of the Makefile:
-  After installing the necessary tools, modify the makefile to include additional LDFLAGS for the required libraries. For example, if using zlib, add the following line to the makefile:
-```bash
-ZNZLIB_LDFLAGS = -L/path/to/your/znzlib/directory -lfsl-znz
-```
-Replace `Path to your znzlib directory` with actual path to your directory.Then, make sure that `$(ZNZLIB_LDFLAGS)` is added in the compile step of the makefile.
+## Compilation
+To compile the McFlirt library, follow these steps:
+
+- Ensure correct path in Makefile:
+ After installing the necessary tools, verify correct path in the makefile to include additional LDFLAGS for the required libraries. For instance, if utilizing znzlib, ensure that the correct path is present in the makefile.
+Make sure `$(ZNZLIB_LDFLAGS)` are included in the compile step of the makefile.
 
 - Compile Source Code:
     Execute the appropriate compile command to build the McFlirt library. For example:
