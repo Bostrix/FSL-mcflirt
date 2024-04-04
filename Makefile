@@ -5,7 +5,7 @@ CXX = g++
 CXXFLAGS += -fpic
 
 #Additional LDFLAGS for znzlib library
-ZNZLIB_LDFLAGS = -L/path/to/yor/znzlib/directory/ -lfsl-znz
+ZNZLIB_LDFLAGS = -L${HOME}/FSL-mcflirt/znzlib -lfsl-znz
 
 #Define source files
 SRCS = Globaloptions.cc Log.cc mcflirt.cc
